@@ -21,6 +21,8 @@ This project provides a GraphQL API to create, read, update, and delete characte
 ## Screenshot
 
 ![Landing Page](./public/images/landing.png)
+![Single Character Page](./public/images/character.png)
+![Characters Page](./public/images/characters.png)
 
 ## Technologies
 
@@ -50,7 +52,7 @@ Once the server is running, access the GraphQL playground at `http://localhost:3
 
 ## API Endpoints
 
-- **Query characters:**
+- **Query single character:**
 
   ```graphql
   query {
@@ -65,7 +67,8 @@ Once the server is running, access the GraphQL playground at `http://localhost:3
   }
   ```
 
-- **Output JSON:**
+  **Output JSON:**
+
   ```json
   {
     "data": {
@@ -76,6 +79,65 @@ Once the server is running, access the GraphQL playground at `http://localhost:3
         "species": "Human",
         "type": "",
         "gender": "Male"
+      }
+    }
+  }
+  ```
+
+- **Query characters:**
+
+  ```graphql
+  query {
+    characters(page: 3) {
+      results {
+        id
+        name
+        status
+        image
+      }
+    }
+  }
+  ```
+
+  **Output JSON:**
+
+  ```json
+  {
+    "data": {
+      "characters": {
+        "results": [
+          {
+            "id": "41",
+            "name": "Big Boobed Waitress",
+            "status": "Alive",
+            "image": "https://rickandmortyapi.com/api/character/avatar/41.jpeg"
+          },
+          {
+            "id": "42",
+            "name": "Big Head Morty",
+            "status": "unknown",
+            "image": "https://rickandmortyapi.com/api/character/avatar/42.jpeg"
+          },
+          {
+            "id": "43",
+            "name": "Big Morty",
+            "status": "Dead",
+            "image": "https://rickandmortyapi.com/api/character/avatar/43.jpeg"
+          },
+          {
+            "id": "44",
+            "name": "Body Guard Morty",
+            "status": "Dead",
+            "image": "https://rickandmortyapi.com/api/character/avatar/44.jpeg"
+          },
+          {
+            "id": "45",
+            "name": "Bill",
+            "status": "Alive",
+            "image": "https://rickandmortyapi.com/api/character/avatar/45.jpeg"
+          }
+          ....
+        ]
       }
     }
   }
